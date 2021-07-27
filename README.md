@@ -19,6 +19,6 @@ See the section about [cypress](https://docs.cypress.io) for more information.
 
 - At initial state, User should see an empty game board.
 - User can select cells on the board to make them "alive".
-- User can unselect Cells to make them "dead".
+- User can unselect cells to make them "dead".
 - User can click "Next Generation" to start the game and see the next generation.
 - User can click "Reset Game" to reset the game board

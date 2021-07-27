@@ -22,7 +22,15 @@ const Board: FC<Props> = ({ cells, onClick }): ReactElement => {
   return (
     <BoardContainer cols={COLS} id="board">
       {cells.map((rows, rowIndex) =>
-        rows.map((col, colIndex) => <Cell cells={cells} rowIndex={rowIndex} colIndex={colIndex} onClick={onClick} />),
+        rows.map((col, colIndex) => (
+          <Cell
+            key={`${rowIndex}-${colIndex}`}
+            cells={cells}
+            rowIndex={rowIndex}
+            colIndex={colIndex}
+            onClick={onClick}
+          />
+        )),
       )}
     </BoardContainer>
   );

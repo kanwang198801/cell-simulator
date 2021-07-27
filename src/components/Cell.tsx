@@ -22,14 +22,7 @@ const SingleCell = styled.div`
 `;
 
 const Cell: FC<Props> = ({ rowIndex, colIndex, cells, onClick }): ReactElement => {
-  return (
-    <SingleCell
-      key={`${rowIndex}-${colIndex}`}
-      onClick={() => onClick(rowIndex, colIndex)}
-      value={cells[rowIndex][colIndex]}
-      className="cell"
-    />
-  );
+  return <SingleCell onClick={() => onClick(rowIndex, colIndex)} value={cells[rowIndex][colIndex]} className="cell" />;
 };
 
 export default memo(Cell);

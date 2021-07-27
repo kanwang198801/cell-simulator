@@ -10,8 +10,8 @@ const make2DArray = (cols: number, rows: number): Cells => {
   return array;
 };
 
-const countNeighbours = (colIndex: number, rowIndex: number, cells: Cells): number => {
-  let neighbourCount = 0;
+const countLiveNeighbours = (colIndex: number, rowIndex: number, cells: Cells): number => {
+  let liveNeighbourCount = 0;
   NEIGHBOURS_LOCATIONS.forEach(([neighbourX, neighbourY]) => {
     const newColIndex = colIndex + neighbourX;
     const newRowIndex = rowIndex + neighbourY;
@@ -19,10 +19,10 @@ const countNeighbours = (colIndex: number, rowIndex: number, cells: Cells): numb
     const isNewRowIndexInBoard = newRowIndex >= 0 && newRowIndex < ROWS;
     const isNewColIndexInBoard = newColIndex >= 0 && newColIndex < COLS;
     if (isNewRowIndexInBoard && isNewColIndexInBoard) {
-      neighbourCount += cells[newColIndex][newRowIndex];
+      liveNeighbourCount += cells[newColIndex][newRowIndex];
     }
   });
-  return neighbourCount;
+  return liveNeighbourCount;
 };
 
 export const initCells = (): Cells => {
@@ -45,10 +45,10 @@ export const runNextGeneration = (cells: Cells): Cells =>
   produce(cells, (newCells) => {
     for (let rowIndex = 0; rowIndex < ROWS; rowIndex++) {
       for (let colIndex = 0; colIndex < COLS; colIndex++) {
-        const neighbourCount = countNeighbours(rowIndex, colIndex, cells);
-        if (cells[rowIndex][colIndex] === 1 && (neighbourCount < 2 || neighbourCount > 3)) {
+        const liveNeighbourCount = countLiveNeighbours(rowIndex, colIndex, cells);
+        if (cells[rowIndex][colIndex] === 1 && (liveNeighbourCount < 2 || liveNeighbourCount > 3)) {
           newCells[rowIndex][colIndex] = 0;
-        } else if (cells[rowIndex][colIndex] === 0 && neighbourCount === 3) {
+        } else if (cells[rowIndex][colIndex] === 0 && liveNeighbourCount === 3) {
           newCells[rowIndex][colIndex] = 1;
         }
       }
