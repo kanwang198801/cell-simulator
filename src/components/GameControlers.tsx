@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { FC, ReactElement, memo } from 'react';
 import styled from 'styled-components';
 
 type Props = {
@@ -13,11 +13,15 @@ const GameControlersContainer = styled.div`
 
 const GameControlers: FC<Props> = ({ nextGenerationOnClick, resetOnClick }): ReactElement => {
   return (
-    <GameControlersContainer>
-      <button onClick={nextGenerationOnClick}>Next Generation</button>
-      <button onClick={resetOnClick}>Reset Game</button>
+    <GameControlersContainer id="game-controllers">
+      <button onClick={nextGenerationOnClick} id="next-generation-button">
+        Next Generation
+      </button>
+      <button onClick={resetOnClick} id="reset-game-button">
+        Reset Game
+      </button>
     </GameControlersContainer>
   );
 };
 
-export default GameControlers;
+export default memo(GameControlers);

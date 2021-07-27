@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { FC, ReactElement, memo } from 'react';
 import { COLS } from '../constants';
 import Cell from './Cell';
 import { Cells } from '../types';
@@ -20,7 +20,7 @@ const BoardContainer = styled.div`
 
 const Board: FC<Props> = ({ cells, onClick }): ReactElement => {
   return (
-    <BoardContainer cols={COLS}>
+    <BoardContainer cols={COLS} id="board">
       {cells.map((rows, rowIndex) =>
         rows.map((col, colIndex) => <Cell cells={cells} rowIndex={rowIndex} colIndex={colIndex} onClick={onClick} />),
       )}
@@ -28,4 +28,4 @@ const Board: FC<Props> = ({ cells, onClick }): ReactElement => {
   );
 };
 
-export default Board;
+export default memo(Board);
