@@ -17,6 +17,7 @@ const SingleCell = styled.div`
   width: 25px;
   height: 25px;
   border: solid 1px #f5f5f5;
+  box-sizing: border-box;
   background-color: ${(props: SingleCellType) => (props.value === 1 ? 'rgb(0, 0, 0)' : 'rgba(0, 0, 0, 0)')};
 `;
 

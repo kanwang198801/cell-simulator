@@ -9,17 +9,22 @@ type Props = {
 const GameControlersContainer = styled.div`
   margin: 20px;
   display: flex;
+  justify-content: space-around;
+`;
+
+const GameControler = styled.button`
+  padding: 10px;
 `;
 
 const GameControlers: FC<Props> = ({ nextGenerationOnClick, resetOnClick }): ReactElement => {
   return (
     <GameControlersContainer id="game-controllers">
-      <button onClick={nextGenerationOnClick} id="next-generation-button">
+      <GameControler onClick={nextGenerationOnClick} id="next-generation-button">
         Next Generation
-      </button>
-      <button onClick={resetOnClick} id="reset-game-button">
+      </GameControler>
+      <GameControler onClick={resetOnClick} id="reset-game-button">
         Reset Game
-      </button>
+      </GameControler>
     </GameControlersContainer>
   );
 };

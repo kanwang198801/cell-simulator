@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import Board from './components/Board';
 import GameControlers from './components/GameControlers';
 import { initCells, toggleCell, runNextGeneration } from './utils';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  width: 500px;
+  margin: auto;
+`;
 
 const App: React.FC = () => {
   const [cells, setCells] = useState(() => initCells());
@@ -12,7 +18,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <>
+    <Container>
       <Board cells={cells} onClick={cellOnClick} />
       <GameControlers
         nextGenerationOnClick={() => {
@@ -20,7 +26,7 @@ const App: React.FC = () => {
         }}
         resetOnClick={() => setCells(initCells())}
       />
-    </>
+    </Container>
   );
 };
 
