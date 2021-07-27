@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import Board from './components/Board';
 import GameControlers from './components/GameControlers';
-import { initCells, toggleCell } from './utils';
-import './App.css';
+import { initCells, toggleCell, runNextGeneration } from './utils';
 
 const App: React.FC = () => {
   const [cells, setCells] = useState(() => initCells());
@@ -17,7 +16,7 @@ const App: React.FC = () => {
       <Board cells={cells} onClick={cellOnClick} />
       <GameControlers
         nextGenerationOnClick={() => {
-          console.info('clicked');
+          setCells((preCells) => runNextGeneration(preCells));
         }}
         resetOnClick={() => setCells(initCells())}
       />
